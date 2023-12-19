@@ -5,6 +5,7 @@
     --light-pink: hsl(275, 100%, 97%);
     --grayish-purple: hsl(292, 16%, 49%);
     --dark-purple: hsl(292, 42%, 14%);
+    --bright-purple: hsl(281, 83%, 54%);
 
     /* Font Sizes */
     --fs-default: 1rem;
@@ -68,8 +69,14 @@ ol[role='list']
 /* Set core body defaults */
 body 
 {
+  margin: 0;
   min-height: 100vh;
   line-height: 1.5;
+  position: relative;
+  background-color: var(--light-pink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -84,13 +91,6 @@ h1, h2,
 h3, h4 
 {
   text-wrap: balance;
-}
-
-/* A elements that don't have a class get default styles */
-a:not([class]) 
-{
-  text-decoration-skip-ink: auto;
-  color: currentColor;
 }
 
 /* Make images easier to work with */
@@ -120,12 +120,127 @@ textarea:not([rows])
   scroll-margin-block: 5ex;
 }
 
+.background-image-desktop,
+.background-image-mobile
+{
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  overflow: visible;
+}
+
+main
+{
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  width: 88%;
+  margin-top: 37%;
+  margin-bottom: 37%; 
+  border-radius: 8px;
+  padding: 25px 25px 0;  
+}
+
+main h1,
+main h3
+{
+  color: var(--dark-purple);
+}
+
+.FAQs-title-container,
+.answer-container
+{
+  display: flex;
+  flex-direction: row;
+}
+
+.FAQs-title-container > svg
+{
+  width: 9%;
+  height: auto;
+}
+
+.FAQs-title-container > h1
+{
+  margin-top: 2px;
+  margin-left: 30px;
+  font-family: WorkSans-Bold;
+  font-size: 2.2rem;
+}
+
+.question-container
+{
+  margin: 25px 0 25px;
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+}
+
+.question-container > h3
+{
+  margin: auto;
+  margin-left: 0;
+  font-family: WorkSans-SBold;
+  transition: all 0.2s;
+}
+
+.question-container:hover > h3
+{
+  color: var(--bright-purple);
+}
+
+.question-container > svg
+{
+  width: 70%;
+  height: auto;
+  margin-left: auto;
+}
+
+.closed 
+{
+  transform: scaleX(0);
+  height: 0;
+}
+
+.opened
+{
+  margin-bottom: 20px;
+}
+
+.answer-container > p
+{
+  margin: 0;
+  font-family: WorkSans-Reg;
+  color: var(--grayish-purple);
+}
+
+span
+{
+  background-color: var(--light-pink);
+  height: 2px;
+}
+
 footer
 { 
-    font-size: 11px; text-align: center;
+  position: absolute;
+  bottom: 1%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px; 
+  text-align: center;
 }
 
 footer a 
 { 
-    color: hsl(228, 45%, 44%);
+  color: hsl(228, 45%, 44%);
+}
+
+@media only screen and (min-width: 1440px)
+{
+  .background-image-mobile
+  {
+    display: none;
+  }
 }
